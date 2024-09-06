@@ -14,12 +14,13 @@ typedef struct {
 
 Contact contacts[MAX_CONTACTS];
 int count = 0;
-void ajouter_contact() {
+void ajouter_contact(int a) {
+   
     if (count >= MAX_CONTACTS) {
         printf("Le carnet de contacts est plein.\n");
         return;
     }
-
+    for(int i ;i<a;i++){
     Contact nouv_contact;
 
     printf("Entrez le nom du contact: ");
@@ -34,6 +35,7 @@ void ajouter_contact() {
     contacts[count] = nouv_contact;
     count++;
     printf("Contact ajouter.\n");
+    }
 }
 void modifier_contact() {
     char name[MAX];
@@ -101,10 +103,12 @@ void rechercher_contact() {
     printf("Contact non trouvé.\n");
 }
 void afficher_contacts() {
+    
     if (count == 0) {
         printf("Aucun contact à afficher.\n");
         return;
     }
+
 
     for (int i = 0; i < count; i++) {
         printf("Nom: %s\n", contacts[i].name);
@@ -123,12 +127,15 @@ int main() {
         printf("4. Rechercher un contact\n");
         printf("5. Afficher tous les contacts\n");
         printf("6. Quitter\n");
-        printf("Choisissez une option: ");
+        printf("ChoisisseR une option: ");
         scanf("%d", &choix);
 
         switch (choix) {
             case 1:
-                ajouter_contact();
+            int number;
+            printf("combien de contact vous avez ajouter?");
+            scanf("%d",&number);
+                ajouter_contact(number);
                 break;
             case 2:
                 modifier_contact();
